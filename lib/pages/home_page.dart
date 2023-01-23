@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
             const SearchWidget(),
             const Padding(
               padding: EdgeInsets.only(left: 12.0, bottom: 8),
-              child: Text1(text: 'Coming Soon'),
+              child: Text1(text: 'Now Showing'),
             ),
             movieController.upcomingMovies.isNotEmpty
                 ? CarouselSlider.builder(

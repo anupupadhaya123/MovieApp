@@ -149,24 +149,4 @@ class ApiClient extends GetxController {
       rethrow;
     }
   }
-
-  //This method gets the searched movies and returns a list of them.
-  //To fetch the searched movies this function requires the query ie. name of the movie.
-  Future<List<MovieModel>> getSearchedMovies(String movieName) async {
-    String uri =
-        '${ApiConstants.baseUrl}search/movie?${ApiConstants.apiKEY}&language=en-US&page=1&include_adult=false&query=$movieName';
-    try {
-      http.Response response = await http.get(Uri.parse(uri));
-      final data = json.decode(response.body);
-      var results = data['results'];
-
-      List<MovieModel> searchMovie = [];
-      for (var movie in results) {
-        searchMovie.add(MovieModel.fromJson(movie));
-      }
-      return searchMovie;
-    } catch (e) {
-      rethrow;
-    }
-  }
 }

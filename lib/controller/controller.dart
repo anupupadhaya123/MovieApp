@@ -89,14 +89,6 @@ class MovieController extends GetxController {
     update();
   }
 
-  void getMovieSearch(String movieTitle) async {
-    var search = await apiClient.getSearchedMovies(movieTitle);
-    if (search.isNotEmpty) {
-      searchedMovies = search;
-    }
-    update();
-  }
-
   void getDetail(String id) async {
     var movie = await apiClient.getMovieDetails(id);
     movies(movie);
