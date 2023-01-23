@@ -20,18 +20,9 @@ class LoginPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 110),
-                CircleAvatar(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  radius: 45.0,
-                  child: ImageIcon(
-                    const AssetImage(MyIcons.mLogo),
-                    size: 60,
-                    color: Theme.of(context).backgroundColor,
-                  ),
-                ),
                 const SizedBox(height: 10),
                 const Text(
-                  'MoviePedia',
+                  'Avocado Media Hub',
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.w900,
@@ -39,7 +30,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 const Text1(
-                  text: 'Login to continue',
+                  text: 'Tap Login to continue',
                   fontSize: 20,
                 ),
                 const SizedBox(height: 20),

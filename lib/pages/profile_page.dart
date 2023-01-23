@@ -12,6 +12,8 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: MyColors.kDarkBackgroundColor,
         title: const Text1(
           text: 'Profile',
           fontSize: 22,

@@ -32,19 +32,10 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              backgroundColor: Theme.of(context).primaryColor,
-              radius: 45.0,
-              child: ImageIcon(
-                const AssetImage(MyIcons.mLogo),
-                size: 60,
-                color: Theme.of(context).backgroundColor,
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'MoviePedia',
+          children: const [
+            SizedBox(height: 10),
+            Text(
+              'Avocoda Media Hub',
               style: TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.w900,

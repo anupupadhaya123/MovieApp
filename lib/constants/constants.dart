@@ -37,5 +37,4 @@ class MyIcons {
   static const String camera = 'assets/icons/camera.png';
   static const String mail = 'assets/icons/mail.png';
   static const String eye = 'assets/icons/view.png';
-  static const String mLogo = 'assets/icons/m.png';
 }
