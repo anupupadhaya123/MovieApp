@@ -37,9 +37,10 @@ class _HomePageState extends State<HomePage> {
                     itemCount: 10,
                     options: CarouselOptions(
                       autoPlay: true,
-                      aspectRatio: 1,
+                      aspectRatio: 16 / 9,
                       height: 200,
-                      viewportFraction: 0.93,
+                      viewportFraction: 0.8,
+                      enlargeStrategy: CenterPageEnlargeStrategy.height,
                       enlargeCenterPage: true,
                     ),
                     itemBuilder: (context, index, realIdx) {
