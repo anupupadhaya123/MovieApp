@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:movieapp/logic/movie_cubit/movie_cubit.dart';
+import 'package:movieapp/logic/movie_cubit/movie_trending_cubit.dart';
 import 'package:movieapp/pages/home_page.dart';
 import 'package:movieapp/pages/login_page.dart';
 import 'package:movieapp/pages/main_page.dart';
@@ -19,8 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MovieCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (BuildContext context) => MovieCubit()),
+        BlocProvider(create: (BuildContext context) => MovieTrendingCubit()),
+      ],
       child: GetMaterialApp(
         title: 'MoviePedia',
         themeMode: ThemeMode.system,

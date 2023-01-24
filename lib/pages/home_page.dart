@@ -6,6 +6,7 @@ import 'package:movieapp/controller/controller.dart';
 import 'package:movieapp/api/api_constants.dart';
 import 'package:movieapp/logic/movie_cubit/movie_cubit.dart';
 import 'package:movieapp/logic/movie_cubit/movie_state.dart';
+import 'package:movieapp/logic/movie_cubit/movie_trending_cubit.dart';
 import 'package:movieapp/widgets/circular_indicator.dart';
 import 'package:movieapp/widgets/header_tile.dart';
 import 'package:movieapp/widgets/horizontal_movie_card.dart';
@@ -60,7 +61,18 @@ class _HomePageState extends State<HomePage> {
                                 state.movies[index].backdropPath.toString(),
                             movieTitle:
                                 state.movies[index].originalTitle.toString(),
-                            onTap: () {},
+                            onTap: () {
+                              // movieController.getCastList(movieController
+                              //     .upcomingMovies[index].id
+                              //     .toString());
+                              // movieController.getDetail(movieController
+                              //     .upcomingMovies[index].id
+                              //     .toString());
+                              // movieController.getSimilar(movieController
+                              //     .upcomingMovies[index].id
+                              //     .toString());
+                              // Get.toNamed('/deatils');
+                            },
                           );
                         }
                         return const Center(
@@ -71,16 +83,16 @@ class _HomePageState extends State<HomePage> {
                       //  HorizontalMovieCard(
                       //   onTap: () {
                       //     setState(() {
-                      //       movieController.getCastList(movieController
-                      //           .upcomingMovies[index].id
-                      //           .toString());
-                      //       movieController.getDetail(movieController
-                      //           .upcomingMovies[index].id
-                      //           .toString());
-                      //       movieController.getSimilar(movieController
-                      //           .upcomingMovies[index].id
-                      //           .toString());
-                      //       Get.toNamed('/deatils');
+                      // movieController.getCastList(movieController
+                      //     .upcomingMovies[index].id
+                      //     .toString());
+                      // movieController.getDetail(movieController
+                      //     .upcomingMovies[index].id
+                      //     .toString());
+                      // movieController.getSimilar(movieController
+                      //     .upcomingMovies[index].id
+                      //     .toString());
+                      // Get.toNamed('/deatils');
                       //     });
                       //   },
                       //   imgUrl: ApiConstants.baseImgUrl +
@@ -100,30 +112,43 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 270,
               child: movieController.trendingMovies.isNotEmpty
-                  ? ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: movieController.trendingMovies.length,
-                      itemBuilder: (context, index) {
-                        return VerticalMovieCard(
-                          onTap: () {
-                            setState(() {
-                              movieController.getCastList(movieController
-                                  .trendingMovies[index].id
-                                  .toString());
-                              movieController.getDetail(movieController
-                                  .trendingMovies[index].id
-                                  .toString());
-                              movieController.getSimilar(movieController
-                                  .trendingMovies[index].id
-                                  .toString());
-                              Get.toNamed('/deatils');
-                            });
-                          },
-                          imgUrl: ApiConstants.baseImgUrl +
-                              movieController.trendingMovies[index].posterPath
-                                  .toString(),
+                  ? BlocBuilder<MovieTrendingCubit, MovieState>(
+                      builder: (context, state) {
+                      if (state is MovieLoadingState) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
                         );
-                      })
+                      }
+                      if (state is MovieLoadedState) {
+                        return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: state.movies.length,
+                          itemBuilder: (context, index) {
+                            return VerticalMovieCard(
+                              onTap: () {
+                                setState(() {
+                                  // movieController.getCastList(movieController
+                                  //     .trendingMovies[index].id
+                                  //     .toString());
+                                  // movieController.getDetail(movieController
+                                  //     .trendingMovies[index].id
+                                  //     .toString());
+                                  // movieController.getSimilar(movieController
+                                  //     .trendingMovies[index].id
+                                  //     .toString());
+                                  // Get.toNamed('/deatils');
+                                });
+                              },
+                              imgUrl: ApiConstants.baseImgUrl +
+                                  state.movies[index].posterPath.toString(),
+                            );
+                          },
+                        );
+                      }
+                      return const Center(
+                        child: Text("An error Occured"),
+                      );
+                    })
                   : const CircleIndicator(),
             ),
             const Padding(
