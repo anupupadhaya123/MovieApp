@@ -127,16 +127,16 @@ class _HomePageState extends State<HomePage> {
                             return VerticalMovieCard(
                               onTap: () {
                                 setState(() {
-                                  // movieController.getCastList(movieController
-                                  //     .trendingMovies[index].id
-                                  //     .toString());
-                                  // movieController.getDetail(movieController
-                                  //     .trendingMovies[index].id
-                                  //     .toString());
-                                  // movieController.getSimilar(movieController
-                                  //     .trendingMovies[index].id
-                                  //     .toString());
-                                  // Get.toNamed('/deatils');
+                                  movieController.getCastList(movieController
+                                      .trendingMovies[index].id
+                                      .toString());
+                                  movieController.getDetail(movieController
+                                      .trendingMovies[index].id
+                                      .toString());
+                                  movieController.getSimilar(movieController
+                                      .trendingMovies[index].id
+                                      .toString());
+                                  Get.toNamed('/deatils');
                                 });
                               },
                               imgUrl: ApiConstants.baseImgUrl +
